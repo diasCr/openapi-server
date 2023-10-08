@@ -76,6 +76,7 @@ paths:
           required: true
       requestBody:
         required: true
+        description: See NameChangeCompletionData, AddressChangeCompletionData, NewTaskCompletionData for possible key-pairs.
         content:
           application/json;charset=UTF-8:
             schema:
