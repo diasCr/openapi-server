@@ -55,7 +55,7 @@ public class MapsController implements UsertasksApi {
 
                 usertasks.add(usertask01);
                 usertasks.add(usertask02);
-                // usertasks.add(usertask03);
+                usertasks.add(usertask03);
 
                 return usertasks;
         }
