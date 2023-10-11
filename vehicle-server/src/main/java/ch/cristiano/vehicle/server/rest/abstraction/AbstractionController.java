@@ -3,6 +3,8 @@ package ch.cristiano.vehicle.server.rest.abstraction;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.openapitools.abstraction.api.VehiclesApi;
 import org.openapitools.abstraction.model.CarData;
 import org.openapitools.abstraction.model.CicleData;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AbstractionController implements VehiclesApi {
 
     @Override
-    public ResponseEntity<List<Vehicle>> queryVehicles() {
+    public ResponseEntity<List<Vehicle>> queryVehicles(@Valid VehicleType type, @Valid VehicleColor color) {
         List<Vehicle> vehicles = this.getVehicles();
         return ResponseEntity.ok(vehicles);
     }
@@ -47,7 +49,7 @@ public class AbstractionController implements VehiclesApi {
 
         vehicles.add(car);
         vehicles.add(truck);
-        // vehicles.add(cicle);
+        vehicles.add(cicle);
 
         return vehicles;
     }
