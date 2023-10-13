@@ -3,6 +3,10 @@ package ch.cristiano.vehicle.server.rest.oneof;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import org.openapitools.oneof.api.VehiclesApi;
 import org.openapitools.oneof.model.CarData;
 import org.openapitools.oneof.model.CicleData;
@@ -17,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class OneOfController implements VehiclesApi {
 
     @Override
-    public ResponseEntity<List<Vehicle>> queryVehicles() {
-        List<Vehicle> vehicles = this.getVehicles();
+    public ResponseEntity<List<Vehicle>> queryVehicles(@Valid Integer page, @Min(1) @Max(100) @Valid Integer size) {
+        List<Vehicle> vehicles = this.geDummytVehicles();
         return ResponseEntity.ok(vehicles);
     }
 
-    private List<Vehicle> getVehicles() {
+    private List<Vehicle> geDummytVehicles() {
         List<Vehicle> vehicles = new ArrayList<>();
 
         Vehicle car = new Vehicle(VehicleType.CAR.name());
