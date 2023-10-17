@@ -68,8 +68,10 @@ components:
       properties:
         vehicleType:
           type: string
+          description: "possible values are described in enum VehicleType"
         color:
           type: string
+          description: "possible values are described in enum VehicleColor"
         data:
           $ref: "#/components/schemas/VehicleData"
     PaginationInfo:

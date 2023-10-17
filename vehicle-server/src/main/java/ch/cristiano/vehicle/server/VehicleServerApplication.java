@@ -30,7 +30,7 @@ public class VehicleServerApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(VehicleRepository repository) {
+	public CommandLineRunner commandLineRunner(VehicleRepository vehicleRepository) {
 		return (args) -> {
 
 			Faker faker = new Faker();
@@ -55,12 +55,12 @@ public class VehicleServerApplication {
 							faker.random().nextBoolean()))
 					.toList();
 
-			repository.saveAll(cars);
-			repository.saveAll(trucks);
-			repository.saveAll(cicles);
+			vehicleRepository.saveAll(cars);
+			vehicleRepository.saveAll(trucks);
+			vehicleRepository.saveAll(cicles);
 
 			logger.info("Vehicles found in the database findAll()");
-			for (VehicleEntity vehicle : repository.findAll()) {
+			for (VehicleEntity vehicle : vehicleRepository.findAll()) {
 				logger.info(vehicle.toString());
 			}
 		};
