@@ -15,7 +15,7 @@ public abstract class VehicleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long vehicleId;
     private String vehicleType;
     private String color;
 
@@ -27,8 +27,8 @@ public abstract class VehicleEntity {
         this.color = color;
     }
 
-    public Long getId() {
-        return id;
+    public Long getVehicleId() {
+        return vehicleId;
     }
 
     public String getVehicleType() {
@@ -41,6 +41,7 @@ public abstract class VehicleEntity {
 
     @Override
     public String toString() {
-        return "VehicleEntity [id=" + id + ", vehicleType=" + vehicleType + ", color=" + color + "]";
+        return "VehicleEntity [id=" + vehicleId + ", vehicleType=" + vehicleType + ", color=" + color + "]";
     }
+
 }

@@ -1,11 +1,14 @@
 package ch.cristiano.vehicle.server.persistence;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CAR")
-public class CarEntity extends VehicleEntity {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class CarEntity extends VehicleEntity {
 
     private String carAttributes;
 

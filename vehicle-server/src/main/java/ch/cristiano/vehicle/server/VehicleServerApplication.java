@@ -14,8 +14,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.github.javafaker.Faker;
 
+import ch.cristiano.vehicle.server.persistence.BmwEntity;
 import ch.cristiano.vehicle.server.persistence.CarEntity;
 import ch.cristiano.vehicle.server.persistence.CicleEntity;
+import ch.cristiano.vehicle.server.persistence.FerrariEntity;
 import ch.cristiano.vehicle.server.persistence.TruckEntity;
 import ch.cristiano.vehicle.server.persistence.VehicleEntity;
 import ch.cristiano.vehicle.server.persistence.VehicleRepository;
@@ -35,10 +37,18 @@ public class VehicleServerApplication {
 
 			Faker faker = new Faker();
 
-			List<CarEntity> cars = IntStream.rangeClosed(1, 50)
-					.mapToObj(i -> new CarEntity(VehicleType.CAR.name(),
+			List<BmwEntity> bmws = IntStream.rangeClosed(1, 50)
+					.mapToObj(i -> new BmwEntity(VehicleType.CAR.name(),
 							VehicleColor.values()[faker.random().nextInt(VehicleColor.values().length)].name(),
-							faker.lorem().fixedString(5)))
+							faker.lorem().fixedString(5),
+							"dummy1"))
+					.toList();
+
+			List<FerrariEntity> ferraris = IntStream.rangeClosed(1, 50)
+					.mapToObj(i -> new FerrariEntity(VehicleType.CAR.name(),
+							VehicleColor.values()[faker.random().nextInt(VehicleColor.values().length)].name(),
+							faker.lorem().fixedString(5),
+							"dummy2"))
 					.toList();
 
 			List<TruckEntity> trucks = IntStream.rangeClosed(1, 50)
@@ -55,7 +65,8 @@ public class VehicleServerApplication {
 							faker.random().nextBoolean()))
 					.toList();
 
-			vehicleRepository.saveAll(cars);
+			vehicleRepository.saveAll(bmws);
+			vehicleRepository.saveAll(ferraris);
 			vehicleRepository.saveAll(trucks);
 			vehicleRepository.saveAll(cicles);
 
